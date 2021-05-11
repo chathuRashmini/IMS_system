@@ -84,6 +84,8 @@
             return $result;
         }
 
+        
+
         public static function getAttendDays ($std_id, $subject_id, $sessionTypeId, $startDate, $endDate, $connect) {
             $query = "SELECT COUNT(attendance) AS attendDays FROM tbl_attendance 
             WHERE std_id = '{$std_id}' AND subject_id = '{$subject_id}' AND sessionTypeId = '{$sessionTypeId}' AND attendance = 1
@@ -283,6 +285,16 @@
 
             $result = mysqli_query($connect, $query);
             
+            return $result;
+        }
+
+        public static function get_totalAvgAtt ($degree_id, $subject_id, $startDate, $endDate, $connect) {
+            $query = " SELECT round(((AVG(attendance))*100),2) AS totalAvgAttendance 
+            FROM tbl_attendance
+            WHERE degree_id = $degree_id AND subject_id = $subject_id
+            AND tbl_attendance.date BETWEEN '{$startDate}' AND '{$endDate}' ";
+
+            $result = mysqli_query($connect, $query);
             return $result;
         }
     }

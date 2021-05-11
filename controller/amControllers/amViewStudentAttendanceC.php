@@ -100,6 +100,22 @@
                     $get_attendDays = amModel::getAttendDays ($std_id, $subject_id, $sessionTypeId, $startDate, $endDate, $connect);
                     $result_attendDays = mysqli_fetch_assoc($get_attendDays);
                     $_SESSION['attendDays'] = $result_attendDays['attendDays'];
+                    $stdAttended = $result_attendDays['attendDays'];
+
+                    $get_totalAvgAtt = amModel::get_totalAvgAtt ($degree_id, $subject_id, $startDate, $endDate, $connect);
+                    $result_totalAvgAtt = mysqli_fetch_assoc($get_totalAvgAtt);
+                    $totalAvgAttendance = $result_totalAvgAtt['totalAvgAttendance'];
+                    $_SESSION['totalAvgAttendance'] = $totalAvgAttendance;
+
+                    if ($stdAttended >= $totalAvgAttendance) {
+                        $approval = "Student has required attendance";
+                    }
+                    else {
+                        $approval = "Student does not have required attendance";
+                    }
+                    $_SESSION['approval'] = $approval;
+                    
+                    /////////////////////////////////////////////////////////////////
 
                     $get_attendPercentage = amModel::getAttendPercentage ($std_id, $subject_id, $sessionTypeId, $startDate, $endDate, $connect);
                     $result_attendPercentage = mysqli_fetch_assoc($get_attendPercentage);

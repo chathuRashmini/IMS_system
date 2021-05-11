@@ -90,17 +90,32 @@
 
                         <div class="row">
                             <div class="col-25">
-                                <label>Attendance percentage</label>
+                                <label>Student's Attendance percentage</label>
                             </div>
                             <div class="col-75">
                                 <input type="number" name="attendPercentage" disabled <?php echo 'value="'.$_SESSION['attendPercentage'].'"' ?> /><br>
                             </div>
                         </div>
 
+                        <div class="row">
+                            <div class="col-25">
+                                <label>Total Attendance percentage</label>
+                            </div>
+                            <div class="col-75">
+                                <input type="number" name="totalAvgAttendance" disabled <?php echo 'value="'.$_SESSION['totalAvgAttendance'].'"' ?> /><br>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-25">
+                                <label>Student's Attendance approval status</label>
+                            </div>
+                            <div class="col-75">
+                                <input type="text" name="approval" disabled <?php echo 'value="'.$_SESSION['approval'].'"' ?> /><br>
+                            </div>
+                        </div>
+
                         <button class="subbtn" name="stdPDF">Generate pdf
-                            <!-- <a href="amStudentWiseAttendanceV.php">
-                                View another studentwise attendance
-                            </a> -->
                         </button>
                         <button class="cancelbtn" type="submit" name="cancel-submit">
                             <a href="amHomeV.php">Exit</a> 
